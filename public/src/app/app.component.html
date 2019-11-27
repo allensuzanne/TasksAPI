@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Restful Tasks API</h1>
+  <div class="allTasks">
+    <button class="btn btn-outline-warning spaced" (click)="getAllTasks()">Get All Tasks</button>
+    <h5 *ngFor="let task of allTasks">{{task.title}} -
+      <button class="btn btn-outline-info" (click)="getTaskFromClick(task._id)">Get Details</button>
+      <button class="btn btn-outline-success" (click)="editTaskForm(task)">Edit</button>
+      <button class="btn btn-outline-secondary" (click)="deleteTask(task._id)">Delete</button>
+    </h5>
+    <app-details *ngIf="oneTask" [taskToShow]="oneTask"></app-details>
+
+    <!-- //============================================ EDIT TASK -->
+    <div *ngIf="editTaskBool">
+      <h3>Edit The Task</h3>
+      <form (submit)="editTask()">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control " [value]="editedTask.title" name="editedTask.title"  [(ngModel)]="editedTask.title" />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" [value]="editedTask.description" name="editedTask.description"  [(ngModel)]="editedTask.description" />
+        </div>
+        <input type="hidden" name="editedTask._id" [(ngModel)]="editedTask._id">
+        <input type="submit" value="Save Edits" class="btn btn-outline-primary" />
+      </form>
+    </div>
+
+
+    <!-- //============================================ ADD A TASK -->
+  </div>
+  <h3>Create a New Task</h3>
+  <form (submit)="createNewTask()">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control " name="newTask.title" [(ngModel)]="newTask.title" />
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <input type="text" class="form-control" name="newTask.description" [(ngModel)]="newTask.description" />
+    </div>
+    <input type="submit" value="Create Task" class="btn btn-outline-primary" />
+  </form>
+</div>

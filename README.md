@@ -18,4 +18,4 @@ A full CRUD app with Angular, Express, Node, and MongoDB. It incorporates forms 
 
 
 ## Contact
-smithsuzanne08@gmail.com
+allensuzanne08@gmail.com
